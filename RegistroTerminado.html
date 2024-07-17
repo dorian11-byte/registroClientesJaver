@@ -16,6 +16,7 @@
         align-items: center;
         height: 100vh;
         margin: 0;
+        flex-direction: column;
       }
       .thank-you-container {
         background-color: white;
@@ -44,6 +45,10 @@
           text-decoration: none;
           font-weight: bold;
       }
+      .label {
+            font-size: 22px;
+            color: #e0030a
+        }
     </style>
   </head>
   <body>
@@ -51,18 +56,11 @@
       <img src="https://img.freepik.com/vector-gratis/marca-verificacion-doble-circulo-verde_78370-1749.jpg" alt="Thank You" class="thank-you-image">
       <h2> Registro Completo </h2>
       <p class="lead">Muchas gracias por enviar tu información. En breve me pondré en contacto contigo para darle seguimiento.</p>
-      <div class="mt-4">
-        <button onclick="cerrarVentanaFinal();" class="btn btn-primary btn-custom">Puedes cerrar esta ventana haciendo <strong>Click en este botón</strong></button>
-      </div>
+
+      <p class="label"><strong>¡Ya puedes cerrar esta ventana!</strong></p>
     </div>
-    <div class="d-flex justify-content-center mb-3 mt-3">
+    <div class="justify-content-center mb-3 mt-3">
         <span class="span">© Todos los derechos reservados - by <a className='span-name' href="https://github.com/dorian11-byte">Dorian Raygoza</a> </span>
     </div>
-
-    <script>
-      function cerrarVentanaFinal() {
-        window.close(); 
-      } 
-    </script>
   </body>
 </html>
