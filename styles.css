@@ -1,0 +1,17 @@
+body {
+    background-color: #e0030a;
+}
+
+form {
+    background-color: white;
+    margin-top: 30px;
+    border-radius: 20px;
+    font-size: 40px !important;
+    width: min(1800px, 90%);
+}
+  
+.calendly-container {
+    display: none;
+    width: 100%;
+    overflow-x: auto;
+}
