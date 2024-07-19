@@ -78,7 +78,8 @@
     </div>
 
     <div class="justify-content-center">
-        <h2 class="mt-3 p-2 text-center"> Registro de cliente - <strong> ASESOR OCTAVIO </strong></h2>
+        <h2 class="mt-3 p-2 text-center"> Registro de cliente - Asesor certificado</h2>
+        <h3 class="mt-3 p-2 text-center"><strong> LCP. LUIS OCTAVIO FLORES MONTAÑO</strong></h3>
     </div>
     <!-- action= will be set by javascript -->
         <div class="mb-1">
@@ -87,7 +88,7 @@
         </div>
 
         <div class="row mt-2 p-2">
-            <div class="col-lg-4 col-md-12">
+            <div class="col-lg-6 col-md-12">
               <div class="mb-3">
                 <label for="nss" class="label form-label">NSS</label>
                 <input type="number" class="form-control" name="NSS" id="nss" placeholder="NSS Numero Seguro Social" aria-label="NSS" required>
@@ -96,21 +97,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-12">
+            <div class="col-lg-6 col-md-12">
               <div class="mb-3">
                 <label for="telefono" class="label form-label">Télefono</label>
                 <input type="phone" class="form-control" name="Telefono" id="telefono" placeholder="Telefono" aria-label="telefono" required>
                 <div class="invalid-feedback">
                   Ingresa un numero de telefono valido
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-              <div class="mb-3">
-                <label for="correo" class="label form-label">Correo / Email</label>
-                <input type="email" class="form-control" name="Correo" id="correo" placeholder="ejemplo@gmail.com" aria-label="correo" required>
-                <div class="invalid-feedback">
-                  Ingresa una direccion de correo valida
                 </div>
               </div>
             </div>
@@ -141,6 +133,27 @@
           </div>
 
           <div class="mb-3 mt-3 p-2 text-center">
+            <h3 class="label">¿Quierese que revisemos tu credito?</h3>
+          </div>
+  
+          <div class="d-flex justify-content-center">
+            <div class="row text-center">
+              <div class="col-lg-6 col-md-12">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" name="Sicredito" id="siCredito"/>
+                  <label for="siCredito" class="label form-check-label">Si</label>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" name="Nocredito" id="noCredito"/>
+                  <label for="noCredito" class="label form-check-label">No</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3 mt-3 p-2 text-center">
             <h3 class="label">¿Quieres agendar una visita a las oficinas?</h3>
           </div>
   
@@ -162,12 +175,16 @@
           </div>
   
           <div class="calendly-container" id="calendlyContainer">
-            <div class="calendly-inline-widget" data-url="https://calendly.com/doriansamuelraygozaalvarado/cita-para-ejecutivo-de-ventas-javer?text_color=060606" style="min-width:320px;height:700px;"></div>
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/clientestrabajo-octavioflores/cita-con-asesor-de-ventas-octavio-flores-casas-javer?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Calendly inline widget end -->
   
             <div class="d-flex justify-content-center">
               <p class="importantMessage" > <strong> IMPORTANTE: </strong> Una vez que el evento sea agendado por favor haz click en el boton de abajo para enviar tu informacion </p>
             </div>
+
+            
           </div>
 
           <div class="mb-3 mt-4 p-2 d-flex justify-content-center">
@@ -229,7 +246,7 @@
         });
 
 
-        const url = "https://script.google.com/macros/s/AKfycbwKLyy88zs110AA4tHgfonh0NtuCReYTqdCqQd0JV_wedWeQVQFcyFj69HDtXVDNI_-/exec" // enter your public ('access' - 'anyone') deployment URL (NOT test deployment!)
+        const url = "https://script.google.com/macros/s/AKfycbyOFSLwlVKTQKk05ew49UD7XrSEhfpVyJSsZUMiExD_gOboLqLXTAhgG84vkCiB1hY_/exec" // enter your public ('access' - 'anyone') deployment URL (NOT test deployment!)
         document.getElementById('form').action = url;
 
         // fetching the data from each column in the sheet
@@ -249,14 +266,7 @@
                 populateDatalists("Nombre completo", data)
             })
             .catch((error) => console.error('!!!!!!!!', error));
-        
-        fetch(`${url}?header=Address`)
-            .then((response) => response.json())
-            .then(({ data }) => {
-                console.log(data);
-                populateDatalists("addresses", data)
-            })
-            .catch((error) => console.error('!!!!!!!!', error));
+
 
         // function to add options to datalists
         const populateDatalists = (id, arr) => {
