@@ -91,18 +91,18 @@
             <div class="col-lg-6 col-md-12">
               <div class="mb-3">
                 <label for="nss" class="label form-label">NSS</label>
-                <input type="number" class="form-control" name="NSS" id="nss" placeholder="NSS Numero Seguro Social" aria-label="NSS" required>
+                <input type="tel" class="form-control" name="NSS" id="nss" placeholder="NSS Numero Seguro Social" aria-label="NSS" maxlength="11" required>
                 <div class="invalid-feedback">
-                  Ingresa un numero de seguro social valido
+                  Ingresa un numero de seguro social valido de 11 digitos
                 </div>
               </div>
             </div>
             <div class="col-lg-6 col-md-12">
               <div class="mb-3">
                 <label for="telefono" class="label form-label">Télefono</label>
-                <input type="phone" class="form-control" name="Telefono" id="telefono" placeholder="Telefono" aria-label="telefono" required>
+                <input type="text" class="form-control" name="Telefono" id="telefono" placeholder="Telefono" aria-label="telefono" maxlength="10" required>
                 <div class="invalid-feedback">
-                  Ingresa un numero de telefono valido
+                  Ingresa un numero de telefono valido de 10 digitos
                 </div>
               </div>
             </div>
@@ -133,20 +133,20 @@
           </div>
 
           <div class="mb-3 mt-3 p-2 text-center">
-            <h3 class="label">¿Quierese que revisemos tu credito?</h3>
+            <h3 class="label">¿Quieres que revisemos tu credito?</h3>
           </div>
   
           <div class="d-flex justify-content-center">
             <div class="row text-center">
               <div class="col-lg-6 col-md-12">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" name="Sicredito" id="siCredito"/>
+                  <input type="radio" class="form-check-input" name="Revision de credito" id="siCredito" value="Si"/>
                   <label for="siCredito" class="label form-check-label">Si</label>
                 </div>
               </div>
               <div class="col-lg-6 col-md-12">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" name="Nocredito" id="noCredito"/>
+                  <input type="radio" class="form-check-input" name="Revision de credito" id="noCredito" value="No"/>
                   <label for="noCredito" class="label form-check-label">No</label>
                 </div>
               </div>
@@ -161,13 +161,13 @@
             <div class="row text-center">
               <div class="col-lg-6 col-md-12">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" name="Si visita" id="siVisita"/>
+                  <input type="checkbox" class="form-check-input" name="Agendo cita" id="siVisita" value="Si"/>
                   <label for="siVisita" class="label form-check-label">Si</label>
                 </div>
               </div>
               <div class="col-lg-6 col-md-12">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" name="No visita" id="noVisita"/>
+                  <input type="checkbox" class="form-check-input" name="Agendo cita" id="noVisita" value="No"/>
                   <label for="noVisita" class="label form-check-label">No</label>
                 </div>
               </div>
@@ -190,8 +190,9 @@
           <div class="mb-3 mt-4 p-2 d-flex justify-content-center">
             <div class="form-check">
               <label for="acuerdoprivacidad" class="label form-check-label">Acepto el acuerdo de privacidad de mis datos</label>
-              <input type="checkbox" class="form-check-input" name="Acuerdo de privacidad" id="acuerdoprivacidad" checked />
+              <input type="checkbox" class="form-check-input" id="acuerdoprivacidad" checked/>
             </div>
+            <input type="hidden" name="Acuerdo de privacidad" id="acuerdoprivacidadValue" value="ACEPTADO" />
           </div>
   
           <div class="d-flex justify-content-center">
@@ -242,6 +243,22 @@
                 calendlyContainer.style.display = 'none';
                 siVisitaCheckbox.checked = false;
             }
+            });
+
+            const form = document.getElementById('form');
+            const acuerdoCheckbox = document.getElementById('acuerdoprivacidad');
+            const acuerdoValue = document.getElementById('acuerdoprivacidadValue');
+
+            form.addEventListener('submit', function(event) {
+                acuerdoValue.value = acuerdoCheckbox.checked ? 'ACEPTADO' : 'NO ACEPTADO';
+            });
+
+            document.getElementById('nss').addEventListener('input', function(event) {
+                this.value = this.value.replace(/\D/g, '').slice(0, 11);
+            });
+
+            document.getElementById('telefono').addEventListener('input', function(event) {
+                this.value = this.value.replace(/\D/g, '').slice(0, 10);
             });
         });
 
